@@ -1,0 +1,132 @@
+@import "../../styles/variables.scss";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: $backdrop-blur;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: $spacing-lg $spacing-xl;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+
+    .logo {
+      font-size: $font-size-2xl;
+    }
+
+    .title {
+      font-size: $font-size-xl;
+      font-weight: 600;
+      background: linear-gradient(
+        135deg,
+        $primary-light 0%,
+        $secondary-light 100%
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-lg;
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      font-size: $font-size-sm;
+      color: $text-secondary;
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+
+        &.connected {
+          background: $success;
+          box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+
+        &.disconnected {
+          background: $error;
+          box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+      }
+    }
+
+    .resetButton {
+      padding: $spacing-sm $spacing-lg;
+      background: $bg-card;
+      backdrop-filter: $backdrop-blur;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: $radius-md;
+      color: $text-primary;
+      font-size: $font-size-sm;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all $transition-base;
+
+      &:hover {
+        background: $bg-card-hover;
+        border-color: rgba(99, 102, 241, 0.4);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-md $spacing-lg;
+
+    .left {
+      .title {
+        font-size: $font-size-lg;
+      }
+    }
+
+    .right {
+      gap: $spacing-md;
+
+      .status {
+        .statusText {
+          display: none;
+        }
+      }
+
+      .resetButton {
+        padding: $spacing-sm $spacing-md;
+        font-size: $font-size-xs;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    .left {
+      .logo {
+        font-size: $font-size-xl;
+      }
+
+      .title {
+        display: none;
+      }
+    }
+  }
+}

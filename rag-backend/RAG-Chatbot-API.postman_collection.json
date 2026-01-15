@@ -1,0 +1,157 @@
+{
+  "info": {
+    "name": "RAG Chatbot API",
+    "description": "Complete Postman collection for testing RAG chatbot with Gemini",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "health"
+          ]
+        },
+        "description": "Check if server and Redis are connected"
+      }
+    },
+    {
+      "name": "2. Send Chat Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sessionId\": \"demo-session-1\",\n  \"message\": \"What are the latest news about technology?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/chat",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "chat"
+          ]
+        },
+        "description": "Send a chat message with RAG + Gemini"
+      }
+    },
+    {
+      "name": "3. Get Chat History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/history/demo-session-1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "history",
+            "demo-session-1"
+          ]
+        },
+        "description": "Retrieve chat history for a session"
+      }
+    },
+    {
+      "name": "4. Send Follow-up Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sessionId\": \"demo-session-1\",\n  \"message\": \"Tell me more about AI developments\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/chat",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "chat"
+          ]
+        },
+        "description": "Send another message in the same session"
+      }
+    },
+    {
+      "name": "5. Clear Session",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/session/demo-session-1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "session",
+            "demo-session-1"
+          ]
+        },
+        "description": "Clear/delete a chat session"
+      }
+    },
+    {
+      "name": "6. Test 'I don't know' Response",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sessionId\": \"test-unknown\",\n  \"message\": \"How do I bake a chocolate cake?\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/chat",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "chat"
+          ]
+        },
+        "description": "Test Gemini's ability to say 'I don't know' for unrelated questions"
+      }
+    }
+  ]
+}

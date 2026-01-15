@@ -1,0 +1,75 @@
+@import "../../styles/variables.scss";
+
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  .messagesContainer {
+    flex: 1;
+    overflow-y: auto;
+    padding: $spacing-xl;
+    display: flex;
+    flex-direction: column;
+
+    .messagesList {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .typingWrapper {
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      margin-top: $spacing-lg;
+    }
+  }
+
+  .errorBanner {
+    padding: $spacing-md $spacing-lg;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: $radius-md;
+    color: $error;
+    text-align: center;
+    margin: $spacing-md $spacing-xl;
+    backdrop-filter: $backdrop-blur;
+
+    .errorText {
+      margin-bottom: $spacing-sm;
+    }
+
+    .retryButton {
+      padding: $spacing-sm $spacing-md;
+      background: $error;
+      color: white;
+      border-radius: $radius-sm;
+      font-size: $font-size-sm;
+      cursor: pointer;
+      transition: all $transition-base;
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    .messagesContainer {
+      padding: $spacing-lg $spacing-md;
+    }
+
+    .errorBanner {
+      margin: $spacing-md;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    .messagesContainer {
+      padding: $spacing-md;
+    }
+  }
+}

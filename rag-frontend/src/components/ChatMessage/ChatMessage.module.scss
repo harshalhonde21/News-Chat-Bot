@@ -1,0 +1,66 @@
+@import "../../styles/variables.scss";
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $spacing-lg;
+  max-width: 80%;
+  animation: slideIn 0.3s ease-out;
+
+  &.user {
+    align-self: flex-end;
+    align-items: flex-end;
+  }
+
+  &.assistant {
+    align-self: flex-start;
+    align-items: flex-start;
+  }
+
+  .bubble {
+    padding: $spacing-md $spacing-lg;
+    border-radius: $radius-lg;
+    word-wrap: break-word;
+    line-height: 1.6;
+    box-shadow: $shadow-md;
+
+    &.userBubble {
+      background: $user-message-bg;
+      color: white;
+      border-bottom-right-radius: $spacing-xs;
+    }
+
+    &.assistantBubble {
+      background: $assistant-message-bg;
+      backdrop-filter: $backdrop-blur;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom-left-radius: $spacing-xs;
+    }
+  }
+
+  .timestamp {
+    font-size: $font-size-xs;
+    color: $text-tertiary;
+    margin-top: $spacing-xs;
+    padding: 0 $spacing-sm;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    max-width: 90%;
+
+    .bubble {
+      padding: $spacing-sm $spacing-md;
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,127 @@
+@import "../../styles/variables.scss";
+
+.inputContainer {
+  position: sticky;
+  bottom: 0;
+  z-index: $z-input;
+  background: rgba(15, 23, 42, 0.9);
+  backdrop-filter: $backdrop-blur;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: $spacing-lg $spacing-xl;
+
+  .wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    gap: $spacing-md;
+    align-items: flex-end;
+
+    .textareaWrapper {
+      flex: 1;
+      position: relative;
+
+      .textarea {
+        width: 100%;
+        min-height: 56px;
+        max-height: 200px;
+        padding: $spacing-md $spacing-lg;
+        background: $bg-card;
+        backdrop-filter: $backdrop-blur;
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: $radius-lg;
+        color: $text-primary;
+        font-size: $font-size-base;
+        line-height: 1.5;
+        resize: none;
+        transition: all $transition-base;
+        font-family: $font-family;
+
+        &::placeholder {
+          color: $text-tertiary;
+        }
+
+        &:focus {
+          border-color: $primary;
+          background: rgba(255, 255, 255, 0.08);
+          box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        &::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: $radius-full;
+        }
+      }
+
+      .hint {
+        position: absolute;
+        bottom: -20px;
+        left: $spacing-md;
+        font-size: $font-size-xs;
+        color: $text-tertiary;
+      }
+    }
+
+    .sendButton {
+      padding: $spacing-md $spacing-xl;
+      background: linear-gradient(135deg, $primary 0%, $secondary 100%);
+      border-radius: $radius-lg;
+      color: white;
+      font-size: $font-size-base;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all $transition-base;
+      box-shadow: $shadow-md;
+      min-width: 100px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover:not(:disabled) {
+        box-shadow: $shadow-glow;
+        transform: translateY(-2px);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(0);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-md $spacing-lg;
+
+    .wrapper {
+      .sendButton {
+        min-width: 80px;
+        padding: $spacing-md $spacing-lg;
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-md;
+
+    .wrapper {
+      .sendButton {
+        min-width: 60px;
+        padding: $spacing-md;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}

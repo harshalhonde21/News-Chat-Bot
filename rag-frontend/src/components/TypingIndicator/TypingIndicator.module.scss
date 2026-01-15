@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+.typing {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-md $spacing-lg;
+  background: $assistant-message-bg;
+  border-radius: $radius-lg;
+  max-width: 80px;
+  backdrop-filter: $backdrop-blur;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    background: $primary-light;
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: $spacing-sm $spacing-md;
+  }
+}
